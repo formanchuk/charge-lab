@@ -37,7 +37,6 @@ body.no-scroll{overflow:hidden}
 .container{max-width:1400px;margin:0 auto;padding:0 24px}
 @media(max-width:768px){.container{padding:0 16px}}
 
-/* HEADER */
 .header{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:var(--transition)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;height:72px;gap:32px}
 .logo{font-weight:900;font-size:18px;letter-spacing:.15em;display:flex;align-items:center;gap:8px;white-space:nowrap}
@@ -57,7 +56,6 @@ body.no-scroll{overflow:hidden}
 .burger{display:none}
 @media(max-width:900px){.nav{display:none}.burger{display:flex}}
 
-/* HERO */
 .hero{position:relative;min-height:calc(100vh - 72px);display:flex;align-items:center;overflow:hidden;padding:60px 0}
 .hero-glow{position:absolute;top:50%;right:5%;transform:translateY(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,var(--glow) 0%,transparent 70%);filter:blur(40px);pointer-events:none;animation:floatGlow 8s ease-in-out infinite}
 @keyframes floatGlow{0%,100%{transform:translateY(-50%) scale(1)}50%{transform:translateY(-52%) scale(1.05)}}
@@ -79,7 +77,6 @@ body.no-scroll{overflow:hidden}
 .hero-product-label{position:absolute;bottom:24px;left:24px;font-size:10px;letter-spacing:.25em;color:var(--text);text-transform:uppercase;z-index:2;background:rgba(0,0,0,.6);backdrop-filter:blur(10px);padding:6px 12px;border-radius:100px}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px}.hero-visual{height:340px}.hero-product{width:200px;height:300px}}
 
-/* SECTION */
 .section{padding:100px 0}
 @media(max-width:768px){.section{padding:64px 0}}
 .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:24px;flex-wrap:wrap}
@@ -88,7 +85,6 @@ body.no-scroll{overflow:hidden}
 .section-link{font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--text-2);display:inline-flex;align-items:center;gap:8px;transition:var(--transition)}
 .section-link:hover{color:var(--text);gap:14px}
 
-/* CATEGORIES */
 .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 @media(max-width:900px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.cat-grid{grid-template-columns:1fr}}
@@ -103,7 +99,6 @@ body.no-scroll{overflow:hidden}
 .cat-card:hover .cat-card-arrow{opacity:1;transform:translateX(0)}
 .cat-card-arrow svg{width:14px;height:14px}
 
-/* PRODUCTS */
 .products-row,.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 @media(max-width:1000px){.products-row,.products-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:720px){.products-row,.products-grid{grid-template-columns:repeat(2,1fr)}}
@@ -114,7 +109,7 @@ body.no-scroll{overflow:hidden}
 .product-media{position:relative;aspect-ratio:1;overflow:hidden;background:var(--bg-3)}
 .product-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.4,0,.2,1)}
 .product-card:hover .product-media img{transform:scale(1.08)}
-.product-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.3));opacity:0;transition:opacity .4s ease}
+.product-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.3));opacity:0;transition:opacity .4s ease;pointer-events:none}
 .product-card:hover .product-media::after{opacity:1}
 .product-badges{position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:6px;z-index:2}
 .badge-tag{font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:5px 9px;border-radius:100px;background:var(--accent);color:var(--accent-contrast)}
@@ -133,7 +128,6 @@ body.no-scroll{overflow:hidden}
 .price-current{font-size:16px;font-weight:800;letter-spacing:-.01em}
 .price-old{font-size:12px;color:var(--text-3);text-decoration:line-through;font-weight:500}
 
-/* OFFER */
 .offer{position:relative;border-radius:24px;overflow:hidden;background:linear-gradient(135deg,var(--bg-2) 0%,var(--bg-3) 100%);border:1px solid var(--border-2);padding:72px 60px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
 .offer::before{content:'';position:absolute;top:-50%;right:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,var(--glow),transparent 70%);filter:blur(40px)}
 .offer-content{position:relative;z-index:1}
@@ -144,22 +138,19 @@ body.no-scroll{overflow:hidden}
 .offer-visual{position:relative;height:360px;display:flex;align-items:center;justify-content:center}
 .offer-product{width:220px;height:320px;border-radius:24px;overflow:hidden;background:var(--bg-2);border:1px solid var(--border-2);box-shadow:var(--shadow);animation:floatProduct 7s ease-in-out infinite;position:relative}
 .offer-product img{width:100%;height:100%;object-fit:cover}
-.offer-product::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,transparent 40%,rgba(0,0,0,.4))}
+.offer-product::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,transparent 40%,rgba(0,0,0,.4));pointer-events:none}
 .offer-badge{position:absolute;top:16px;left:16px;background:#ff3b5c;color:#fff;font-size:11px;font-weight:800;letter-spacing:.1em;padding:6px 12px;border-radius:100px;z-index:2}
 @media(max-width:900px){.offer{grid-template-columns:1fr;padding:48px 28px;gap:32px}.offer-visual{height:240px}.offer-product{width:160px;height:220px}}
 
-/* BRANDS */
 .brands{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:48px 0}
 @media(max-width:720px){.brands{grid-template-columns:repeat(2,1fr);gap:32px}}
 .brand-item{text-align:center;font-size:clamp(16px,2vw,22px);font-weight:800;letter-spacing:.15em;color:var(--text-3);transition:var(--transition);cursor:pointer}
 .brand-item:hover{color:var(--text);letter-spacing:.2em}
 
-/* CTA */
 .cta{text-align:center;padding:120px 0}
 .cta-title{font-size:clamp(48px,10vw,140px);font-weight:900;letter-spacing:-.05em;line-height:.9;margin-bottom:24px}
 .cta-sub{font-size:16px;color:var(--text-2);letter-spacing:.05em;margin-bottom:40px}
 
-/* FOOTER */
 .footer{border-top:1px solid var(--border);padding:64px 0 32px;background:var(--bg-2)}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
 @media(max-width:820px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px}}
@@ -172,7 +163,6 @@ body.no-scroll{overflow:hidden}
 .footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--text-3);letter-spacing:.05em}
 .age-badge{padding:5px 12px;border:1px solid var(--border-2);border-radius:100px;font-weight:700;font-size:11px;letter-spacing:.1em}
 
-/* DRAWER */
 .drawer-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .35s ease}
 .drawer-overlay.open{opacity:1;pointer-events:auto}
 .drawer{position:fixed;top:0;right:0;bottom:0;width:420px;max-width:100vw;background:var(--bg);border-left:1px solid var(--border);z-index:201;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
@@ -198,10 +188,8 @@ body.no-scroll{overflow:hidden}
 .cart-total-value{font-size:26px;font-weight:800}
 .btn-primary{width:100%;padding:16px;border-radius:100px;background:var(--accent);color:var(--accent-contrast);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;transition:var(--transition)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px var(--glow)}
-.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none}
 .empty-state{text-align:center;padding:64px 20px;color:var(--text-3);font-size:13px;letter-spacing:.05em}
 
-/* SEARCH */
 .search-overlay{position:fixed;inset:0;z-index:300;background:color-mix(in srgb,var(--bg) 96%,transparent);backdrop-filter:blur(20px);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .3s ease}
 .search-overlay.open{opacity:1;pointer-events:auto}
 .search-head{display:flex;justify-content:space-between;align-items:center;padding:24px;border-bottom:1px solid var(--border)}
@@ -216,7 +204,6 @@ body.no-scroll{overflow:hidden}
 .chip:hover{border-color:var(--text);color:var(--text)}
 .chip.active{background:var(--accent);color:var(--accent-contrast);border-color:var(--accent)}
 
-/* MOBILE MENU */
 .mobile-menu{position:fixed;inset:0;z-index:250;background:var(--bg);display:flex;flex-direction:column;transform:translateY(-100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
 .mobile-menu.open{transform:translateY(0)}
 .mobile-menu-head{display:flex;justify-content:space-between;align-items:center;padding:24px;border-bottom:1px solid var(--border)}
@@ -224,7 +211,6 @@ body.no-scroll{overflow:hidden}
 .mobile-menu-body a{font-size:32px;font-weight:800;letter-spacing:-.02em;padding:16px 0;border-bottom:1px solid var(--border);transition:var(--transition)}
 .mobile-menu-body a:hover{padding-left:12px}
 
-/* CHECKOUT MODAL */
 .modal-overlay{position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .3s ease}
 .modal-overlay.open{opacity:1;pointer-events:auto}
 .modal{background:var(--bg);border:1px solid var(--border);border-radius:24px;width:100%;max-width:640px;max-height:90vh;overflow-y:auto;transform:scale(.95);transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
@@ -266,7 +252,7 @@ body.no-scroll{overflow:hidden}
 
 .btn-row{display:flex;gap:12px;margin-top:24px}
 .btn-row .btn-primary,.btn-row .btn-secondary{flex:1}
-.btn-secondary{padding:14px 20px;border:1px solid var(--border-2);border-radius:100px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);transition:var(--transition);text-align:center}
+.btn-secondary{padding:14px 20px;border:1px solid var(--border-2);border-radius:100px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);transition:var(--transition);text-align:center;display:inline-flex;align-items:center;justify-content:center}
 .btn-secondary:hover{border-color:var(--text);color:var(--text)}
 .btn-save{padding:14px 32px;border-radius:100px;background:var(--accent);color:var(--accent-contrast);font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:var(--transition)}
 .btn-save:hover{transform:translateY(-2px);box-shadow:0 12px 30px var(--glow)}
@@ -277,9 +263,8 @@ body.no-scroll{overflow:hidden}
 .success-icon svg{width:36px;height:36px}
 .success-title{font-size:24px;font-weight:800;margin-bottom:12px}
 .success-sub{color:var(--text-2);font-size:14px;margin-bottom:8px}
-.success-order{font-size:13px;color:var(--text-3);margin-bottom:32px}
+.success-order{font-size:13px;color:var(--text-3);margin-bottom:32px;line-height:1.8}
 
-/* ADMIN */
 .admin{display:none;min-height:100vh;background:var(--bg)}
 .admin.active{display:block}
 .admin-header{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--bg);z-index:50;gap:16px}
@@ -303,7 +288,7 @@ body.no-scroll{overflow:hidden}
 .form-group{display:flex;flex-direction:column;gap:8px}
 .form-group.full{grid-column:1/-1}
 .form-label{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--text-3)}
-.form-input{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:12px 14px;color:var(--text);font-size:14px;transition:var(--transition);outline:none}
+.form-input{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:12px 14px;color:var(--text);font-size:14px;transition:var(--transition);outline:none;width:100%}
 .form-input:focus{border-color:var(--text-2);background:var(--bg-3)}
 .form-input::placeholder{color:var(--text-3)}
 .checkbox-row{display:flex;gap:20px;flex-wrap:wrap;margin:16px 0}
@@ -315,7 +300,7 @@ body.no-scroll{overflow:hidden}
 .admin-table td{padding:14px 12px;font-size:13px;border-bottom:1px solid var(--border);vertical-align:middle}
 .admin-table tr:hover td{background:var(--bg-2)}
 .admin-table .product-thumb{width:40px;height:40px;border-radius:8px;object-fit:cover}
-.admin-table .action-btn{padding:6px 12px;border:1px solid var(--border-2);border-radius:100px;font-size:10px;font-weight:600;letter-spacing:.05em;color:var(--text-2);margin-right:4px;transition:var(--transition)}
+.admin-table .action-btn{padding:6px 12px;border:1px solid var(--border-2);border-radius:100px;font-size:10px;font-weight:600;letter-spacing:.05em;color:var(--text-2);margin-right:4px;transition:var(--transition);cursor:pointer}
 .admin-table .action-btn:hover{border-color:var(--text);color:var(--text)}
 .admin-table .action-btn.danger:hover{border-color:#ff3b5c;color:#ff3b5c}
 
@@ -325,7 +310,6 @@ body.no-scroll{overflow:hidden}
 .status-pill.shipped{background:#7c3aed;color:#fff}
 .status-pill.completed{background:#059669;color:#fff}
 .status-pill.cancelled{background:#dc2626;color:#fff}
-
 .status-select{padding:6px 10px;background:var(--bg-2);border:1px solid var(--border);border-radius:8px;font-size:11px;color:var(--text);cursor:pointer;outline:none}
 
 .toggle-row{display:flex;justify-content:space-between;align-items:center;padding:16px;border-bottom:1px solid var(--border)}
@@ -352,7 +336,6 @@ body.no-scroll{overflow:hidden}
 .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,120%);background:var(--accent);color:var(--accent-contrast);padding:14px 28px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;z-index:500;transition:transform .4s cubic-bezier(.34,1.56,.64,1);box-shadow:var(--shadow);white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis}
 .toast.show{transform:translate(-50%,0)}
 
-/* Адаптив для кошика */
 @media(max-width:480px){
   .drawer{width:100%}
   .modal-overlay{padding:0;align-items:flex-end}
@@ -363,7 +346,7 @@ body.no-scroll{overflow:hidden}
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- ===================== HEADER ===================== -->
 <header class="header" id="header">
   <div class="container header-inner">
     <a href="#" class="logo" onclick="showView('store');return false;">
@@ -398,7 +381,7 @@ body.no-scroll{overflow:hidden}
   </div>
 </header>
 
-<!-- STORE -->
+<!-- ===================== STORE ===================== -->
 <div id="view-store" class="view active">
 
   <section class="hero" id="home">
@@ -415,7 +398,7 @@ body.no-scroll{overflow:hidden}
       </div>
       <div class="hero-visual">
         <div class="hero-product">
-          <img src="https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=600&h=800&fit=crop" alt="Product" onerror="this.style.display='none'">
+          <img src="https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=600&h=800&fit=crop&q=80" alt="Product">
           <span class="hero-product-label">Новинка</span>
         </div>
       </div>
@@ -466,7 +449,7 @@ body.no-scroll{overflow:hidden}
         <div class="offer-visual">
           <div class="offer-product">
             <span class="offer-badge">−20%</span>
-            <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=500&h=700&fit=crop" alt="Sale" onerror="this.parentElement.innerHTML='<span style=font-size:64px;font-weight:900;color:var(--text-3);opacity:.3;display:flex;align-items:center;justify-content:center;height:100%>−20</span>'">
+            <img src="https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=500&h=700&fit=crop&q=80" alt="Sale">
           </div>
         </div>
       </div>
@@ -550,7 +533,7 @@ body.no-scroll{overflow:hidden}
   </section>
 </div>
 
-<!-- ОБРАНЕ -->
+<!-- ===================== ОБРАНЕ ===================== -->
 <div id="view-favorites" class="view">
   <section class="section">
     <div class="container">
@@ -567,7 +550,7 @@ body.no-scroll{overflow:hidden}
   </section>
 </div>
 
-<!-- АДМІНКА -->
+<!-- ===================== АДМІНКА ===================== -->
 <div id="view-admin" class="admin">
   <div class="admin-header">
     <div style="display:flex;align-items:center;gap:16px;">
@@ -606,32 +589,14 @@ body.no-scroll{overflow:hidden}
     </aside>
 
     <main class="admin-main">
-      <!-- ПАНЕЛЬ -->
       <div class="admin-tab" id="tab-dashboard">
         <h1 class="admin-title">Панель</h1>
         <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-label">Товари</div>
-            <div class="stat-value" id="statProducts">0</div>
-            <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Категорії</div>
-            <div class="stat-value" id="statCategories">0</div>
-            <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Замовлення</div>
-            <div class="stat-value" id="statOrders">0</div>
-            <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Дохід</div>
-            <div class="stat-value" id="statRevenue">₴0</div>
-            <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-          </div>
+          <div class="stat-card"><div class="stat-label">Товари</div><div class="stat-value" id="statProducts">0</div></div>
+          <div class="stat-card"><div class="stat-label">Категорії</div><div class="stat-value" id="statCategories">0</div></div>
+          <div class="stat-card"><div class="stat-label">Замовлення</div><div class="stat-value" id="statOrders">0</div></div>
+          <div class="stat-card"><div class="stat-label">Дохід</div><div class="stat-value" id="statRevenue">₴0</div></div>
         </div>
-
         <h2 style="font-size:16px;font-weight:700;margin:32px 0 16px;">Останні замовлення</h2>
         <div class="admin-card" style="padding:0;overflow:auto;">
           <table class="admin-table">
@@ -641,7 +606,6 @@ body.no-scroll{overflow:hidden}
         </div>
       </div>
 
-      <!-- ТОВАРИ -->
       <div class="admin-tab" id="tab-products" style="display:none;">
         <h1 class="admin-title">
           Товари
@@ -649,9 +613,7 @@ body.no-scroll{overflow:hidden}
         </h1>
 
         <div class="admin-toolbar">
-          <div class="field">
-            <input class="form-input" id="adminProductSearch" placeholder="Пошук за назвою або брендом..." oninput="renderProductsTable()">
-          </div>
+          <div class="field"><input class="form-input" id="adminProductSearch" placeholder="Пошук за назвою або брендом..." oninput="renderProductsTable()"></div>
           <select class="form-input" id="adminProductCategory" onchange="renderProductsTable()" style="max-width:200px;">
             <option value="">Всі категорії</option>
           </select>
@@ -709,20 +671,14 @@ body.no-scroll{overflow:hidden}
 
         <div class="admin-card" style="padding:0;overflow:auto;">
           <table class="admin-table">
-            <thead>
-              <tr><th>Фото</th><th>Назва</th><th>Бренд</th><th>Категорія</th><th>Ціна</th><th>Мітки</th><th>Дії</th></tr>
-            </thead>
+            <thead><tr><th>Фото</th><th>Назва</th><th>Бренд</th><th>Категорія</th><th>Ціна</th><th>Мітки</th><th>Дії</th></tr></thead>
             <tbody id="productsTable"></tbody>
           </table>
         </div>
       </div>
 
-      <!-- КАТЕГОРІЇ -->
       <div class="admin-tab" id="tab-categories" style="display:none;">
-        <h1 class="admin-title">
-          Категорії
-          <button class="btn-save" onclick="addCategory()">+ Додати категорію</button>
-        </h1>
+        <h1 class="admin-title">Категорії <button class="btn-save" onclick="addCategory()">+ Додати категорію</button></h1>
         <div class="admin-card" style="padding:0;overflow:auto;">
           <table class="admin-table">
             <thead><tr><th>Код</th><th>Назва</th><th>Товарів</th><th>Дії</th></tr></thead>
@@ -731,14 +687,10 @@ body.no-scroll{overflow:hidden}
         </div>
       </div>
 
-      <!-- ЗАМОВЛЕННЯ -->
       <div class="admin-tab" id="tab-orders" style="display:none;">
         <h1 class="admin-title">Замовлення</h1>
-
         <div class="admin-toolbar">
-          <div class="field">
-            <input class="form-input" id="adminOrderSearch" placeholder="Пошук за номером або ім'ям..." oninput="renderOrdersTable()">
-          </div>
+          <div class="field"><input class="form-input" id="adminOrderSearch" placeholder="Пошук за номером або ім'ям..." oninput="renderOrdersTable()"></div>
           <select class="form-input" id="adminOrderStatus" onchange="renderOrdersTable()" style="max-width:200px;">
             <option value="">Всі статуси</option>
             <option value="new">Нові</option>
@@ -748,18 +700,14 @@ body.no-scroll{overflow:hidden}
             <option value="cancelled">Скасовані</option>
           </select>
         </div>
-
         <div class="admin-card" style="padding:0;overflow:auto;">
           <table class="admin-table">
-            <thead>
-              <tr><th>#</th><th>Клієнт</th><th>Телефон</th><th>Доставка</th><th>Адреса</th><th>Сума</th><th>Дата</th><th>Статус</th></tr>
-            </thead>
+            <thead><tr><th>#</th><th>Клієнт</th><th>Телефон</th><th>Доставка</th><th>Адреса</th><th>Сума</th><th>Дата</th><th>Статус</th></tr></thead>
             <tbody id="ordersTable"></tbody>
           </table>
         </div>
       </div>
 
-      <!-- ГОЛОВНА -->
       <div class="admin-tab" id="tab-homepage" style="display:none;">
         <h1 class="admin-title">Головна сторінка</h1>
         <div class="admin-card" style="padding:0;">
@@ -776,7 +724,7 @@ body.no-scroll{overflow:hidden}
   </div>
 </div>
 
-<!-- FOOTER -->
+<!-- ===================== FOOTER ===================== -->
 <footer class="footer" id="footer">
   <div class="container">
     <div class="footer-grid">
@@ -811,7 +759,7 @@ body.no-scroll{overflow:hidden}
   </div>
 </footer>
 
-<!-- CART -->
+<!-- ===================== CART ===================== -->
 <div class="drawer-overlay" id="cartOverlay" onclick="closeCart()"></div>
 <aside class="drawer" id="cartDrawer">
   <div class="drawer-head">
@@ -830,7 +778,7 @@ body.no-scroll{overflow:hidden}
   </div>
 </aside>
 
-<!-- CHECKOUT MODAL -->
+<!-- ===================== CHECKOUT ===================== -->
 <div class="modal-overlay" id="checkoutOverlay" onclick="if(event.target===this)closeCheckout()">
   <div class="modal">
     <div class="modal-head">
@@ -839,27 +787,16 @@ body.no-scroll{overflow:hidden}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
     </div>
-
     <div class="modal-body">
-      <!-- КРОК 1: ДАНІ ТА ДОСТАВКА -->
       <div class="modal-step active" id="checkoutStep1">
         <div class="checkout-section">
           <div class="checkout-section-title">Контактні дані</div>
           <div class="form-row">
-            <div class="field">
-              <label>Ім'я *</label>
-              <input type="text" id="coName" placeholder="Іван Іванов">
-            </div>
-            <div class="field">
-              <label>Телефон *</label>
-              <input type="tel" id="coPhone" placeholder="+380 __ ___ __ __">
-            </div>
+            <div class="field"><label>Ім'я *</label><input type="text" id="coName" placeholder="Іван Іванов"></div>
+            <div class="field"><label>Телефон *</label><input type="tel" id="coPhone" placeholder="+380 __ ___ __ __"></div>
           </div>
           <div class="form-row full">
-            <div class="field">
-              <label>Email (необов'язково)</label>
-              <input type="email" id="coEmail" placeholder="you@example.com">
-            </div>
+            <div class="field"><label>Email (необов'язково)</label><input type="email" id="coEmail" placeholder="you@example.com"></div>
           </div>
         </div>
 
@@ -873,7 +810,7 @@ body.no-scroll{overflow:hidden}
                 <div class="delivery-name">Нова Пошта</div>
                 <div class="delivery-desc">Доставка у відділення або поштомат</div>
               </div>
-              <div class="delivery-price">від ₴70</div>
+              <div class="delivery-price">₴70</div>
             </label>
             <label class="delivery-option" data-delivery="courier">
               <input type="radio" name="delivery" value="courier">
@@ -896,15 +833,11 @@ body.no-scroll{overflow:hidden}
           </div>
         </div>
 
-        <div class="checkout-section" id="deliveryFields">
-          <!-- динамічно -->
-        </div>
+        <div class="checkout-section" id="deliveryFields"></div>
 
         <div class="checkout-section">
           <div class="checkout-section-title">Коментар</div>
-          <div class="field">
-            <textarea id="coComment" rows="2" placeholder="Побажання до замовлення..."></textarea>
-          </div>
+          <div class="field"><textarea id="coComment" rows="2" placeholder="Побажання до замовлення..."></textarea></div>
         </div>
 
         <div class="order-summary">
@@ -919,7 +852,6 @@ body.no-scroll{overflow:hidden}
         </div>
       </div>
 
-      <!-- КРОК 2: УСПІХ -->
       <div class="modal-step" id="checkoutStep2">
         <div class="success">
           <div class="success-icon">
@@ -935,7 +867,7 @@ body.no-scroll{overflow:hidden}
   </div>
 </div>
 
-<!-- SEARCH -->
+<!-- ===================== SEARCH ===================== -->
 <div class="search-overlay" id="searchOverlay">
   <div class="search-head">
     <div class="search-label">Пошук CHARGE LAB</div>
@@ -958,7 +890,7 @@ body.no-scroll{overflow:hidden}
   </div>
 </div>
 
-<!-- MOBILE MENU -->
+<!-- ===================== MOBILE MENU ===================== -->
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-head">
     <div class="logo"><span class="logo-dot"></span>CHARGE LAB</div>
@@ -979,39 +911,24 @@ body.no-scroll{overflow:hidden}
 
 <script>
 /* ============================================================ */
-/* ДАНІ — реальні фото по категоріях                            */
+/* ДАНІ                                                         */
 /* ============================================================ */
-
 const CATEGORIES = [
-  {
-    name:'Pod Systems', label:'ПОД-СИСТЕМИ', num:'01',
-    image:'https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=800&h=600&fit=crop&q=80'
-  },
-  {
-    name:'Disposables', label:'ОДНОРАЗКИ', num:'02',
-    image:'https://images.unsplash.com/photo-1607623820419-3b4a1e6d54b6?w=800&h=600&fit=crop&q=80'
-  },
-  {
-    name:'Liquids', label:'РІДИНИ', num:'03',
-    image:'https://images.unsplash.com/photo-1567696153798-9111f9cd3d0d?w=800&h=600&fit=crop&q=80'
-  },
-  {
-    name:'Cartridges', label:'КАРТРИДЖІ', num:'04',
-    image:'https://images.unsplash.com/photo-1527960656-4c4e0e5b8fdc?w=800&h=600&fit=crop&q=80'
-  },
-  {
-    name:'Accessories', label:'АКСЕСУАРИ', num:'05',
-    image:'https://images.unsplash.com/photo-1602526432604-029a709e131c?w=800&h=600&fit=crop&q=80'
-  },
-  {
-    name:'Sale', label:'АКЦІЇ', num:'06',
-    image:'https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=800&h=600&fit=crop&q=80'
-  },
+  { name:'Pod Systems', label:'ПОД-СИСТЕМИ', num:'01',
+    image:'https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=800&h=600&fit=crop&q=80' },
+  { name:'Disposables', label:'ОДНОРАЗКИ', num:'02',
+    image:'https://images.unsplash.com/photo-1607623820419-3b4a1e6d54b6?w=800&h=600&fit=crop&q=80' },
+  { name:'Liquids', label:'РІДИНИ', num:'03',
+    image:'https://images.unsplash.com/photo-1567696153798-9111f9cd3d0d?w=800&h=600&fit=crop&q=80' },
+  { name:'Cartridges', label:'КАРТРИДЖІ', num:'04',
+    image:'https://images.unsplash.com/photo-1527960656-4c4e0e5b8fdc?w=800&h=600&fit=crop&q=80' },
+  { name:'Accessories', label:'АКСЕСУАРИ', num:'05',
+    image:'https://images.unsplash.com/photo-1602526432604-029a709e131c?w=800&h=600&fit=crop&q=80' },
+  { name:'Sale', label:'АКЦІЇ', num:'06',
+    image:'https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=800&h=600&fit=crop&q=80' },
 ];
 
-/* Реальні фото товарів — по категоріях */
 const PRODUCT_IMAGES = {
-  // POD-СИСТЕМИ
   pod: [
     'https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=600&h=600&fit=crop&q=80',
     'https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=600&h=600&fit=crop&q=80',
@@ -1019,27 +936,23 @@ const PRODUCT_IMAGES = {
     'https://images.unsplash.com/photo-1614179929897-9d6d8f9a0c3e?w=600&h=600&fit=crop&q=80',
     'https://images.unsplash.com/photo-1611765083440-b7e6a6f8a8f6?w=600&h=600&fit=crop&q=80',
   ],
-  // ОДНОРАЗКИ
   disposable: [
     'https://images.unsplash.com/photo-1607623820419-3b4a1e6d54b6?w=600&h=600&fit=crop&q=80',
     'https://images.unsplash.com/photo-1622035453010-3f1b1c8d5f8c?w=600&h=600&fit=crop&q=80',
     'https://images.unsplash.com/photo-1610461888750-10bfc601b874?w=600&h=600&fit=crop&q=80',
     'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&h=600&fit=crop&q=80',
   ],
-  // РІДИНИ
   liquid: [
     'https://images.unsplash.com/photo-1567696153798-9111f9cd3d0d?w=600&h=600&fit=crop&q=80',
     'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=600&h=600&fit=crop&q=80',
     'https://images.unsplash.com/photo-1585671963101-8c0ba95a6f9e?w=600&h=600&fit=crop&q=80',
     'https://images.unsplash.com/photo-1615486364100-9d1e0e77d8e2?w=600&h=600&fit=crop&q=80',
   ],
-  // КАРТРИДЖІ / КОЙЛИ
   cartridge: [
     'https://images.unsplash.com/photo-1527960656-4c4e0e5b8fdc?w=600&h=600&fit=crop&q=80',
     'https://images.unsplash.com/photo-1607424064879-708e4d9b3f8e?w=600&h=600&fit=crop&q=80',
     'https://images.unsplash.com/photo-1613918431703-aa50889e3be9?w=600&h=600&fit=crop&q=80',
   ],
-  // АКСЕСУАРИ
   accessory: [
     'https://images.unsplash.com/photo-1602526432604-029a709e131c?w=600&h=600&fit=crop&q=80',
     'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&h=600&fit=crop&q=80',
@@ -1048,95 +961,58 @@ const PRODUCT_IMAGES = {
   ],
 };
 
-/* Хелпер: вибрати фото з масиву по індексу */
+/* Fallback-фото, якщо конкретне не завантажиться */
+const IMG = () => 'https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=600&h=600&fit=crop&q=80';
 const pickImg = (arr, i) => arr[i % arr.length];
 
 let PRODUCTS = [
-  // ============ POD-СИСТЕМИ ============
-  { id:1,  name:'XROS 4 Pod Kit',        brand:'VAPORESSO', category:'Pod Systems', price:999,  oldPrice:null, isNew:true,  isHit:true,  isSale:false, isFeatured:true,
-    image: PRODUCT_IMAGES.pod[0],
-    desc:'Компактний под-пристрій з регульованим обдувом.' },
+  { id:1,  name:'XROS 4 Pod Kit', brand:'VAPORESSO', category:'Pod Systems', price:999, oldPrice:null, isNew:true, isHit:true, isSale:false, isFeatured:true, image:PRODUCT_IMAGES.pod[0], desc:'Компактний под-пристрій з регульованим обдувом.' },
+  { id:2,  name:'Argus P2', brand:'VOOPOO', category:'Pod Systems', price:1099, oldPrice:1399, isNew:false, isHit:true, isSale:true, isFeatured:true, image:PRODUCT_IMAGES.pod[1], desc:'Легкий корпус, потужна батарея 1100mAh.' },
+  { id:3,  name:'Caliburn G3', brand:'UWELL', category:'Pod Systems', price:949, oldPrice:null, isNew:true, isHit:false, isSale:false, isFeatured:false, image:PRODUCT_IMAGES.pod[2], desc:'Класика від UWELL у новому виконанні.' },
+  { id:15, name:'Vinci 3', brand:'VOOPOO', category:'Pod Systems', price:1199, oldPrice:null, isNew:true, isHit:true, isSale:false, isFeatured:true, image:PRODUCT_IMAGES.pod[3], desc:'Флагман VOOPOO з дисплеєм.' },
+  { id:16, name:'Luxe X Pro', brand:'VAPORESSO', category:'Pod Systems', price:1299, oldPrice:1599, isNew:false, isHit:true, isSale:true, isFeatured:false, image:PRODUCT_IMAGES.pod[4], desc:'Преміум под зі шкіряною вставкою.' },
 
-  { id:2,  name:'Argus P2',              brand:'VOOPOO',    category:'Pod Systems', price:1099, oldPrice:1399, isNew:false, isHit:true,  isSale:true,  isFeatured:true,
-    image: PRODUCT_IMAGES.pod[1],
-    desc:'Легкий корпус, потужна батарея 1100mAh.' },
+  { id:4,  name:'Nova Bar 15000', brand:'SMOK', category:'Disposables', price:549, oldPrice:null, isNew:true, isHit:true, isSale:false, isFeatured:true, image:PRODUCT_IMAGES.disposable[0], desc:'15 000 затяжок, 20 смаків на вибір.' },
+  { id:5,  name:'Elf Bar BC5000', brand:'ELF', category:'Disposables', price:449, oldPrice:599, isNew:false, isHit:true, isSale:true, isFeatured:false, image:PRODUCT_IMAGES.disposable[1], desc:'Хіт продажів, компактний та надійний.' },
+  { id:6,  name:'Lost Mary BM5000', brand:'LOST MARY', category:'Disposables', price:479, oldPrice:null, isNew:false, isHit:false, isSale:false, isFeatured:false, image:PRODUCT_IMAGES.disposable[2], desc:'Популярний одноразовий пристрій.' },
+  { id:17, name:'HQD Cuvie Plus', brand:'HQD', category:'Disposables', price:399, oldPrice:null, isNew:true, isHit:false, isSale:false, isFeatured:false, image:PRODUCT_IMAGES.disposable[3], desc:'Компактна одноразка з насиченим смаком.' },
 
-  { id:3,  name:'Caliburn G3',           brand:'UWELL',     category:'Pod Systems', price:949,  oldPrice:null, isNew:true,  isHit:false, isSale:false, isFeatured:false,
-    image: PRODUCT_IMAGES.pod[2],
-    desc:'Класика від UWELL у новому виконанні.' },
+  { id:7,  name:'Salt Nic 30ml', brand:'CHARGE', category:'Liquids', price:299, oldPrice:null, isNew:false, isHit:true, isSale:false, isFeatured:false, image:PRODUCT_IMAGES.liquid[0], desc:'Сольова рідина 30мг, преміум якість.' },
+  { id:8,  name:'Fruit Mix 60ml', brand:'CHARGE', category:'Liquids', price:399, oldPrice:499, isNew:true, isHit:false, isSale:true, isFeatured:false, image:PRODUCT_IMAGES.liquid[1], desc:'Фруктовий мікс, 3мг нікотину.' },
+  { id:9,  name:'Menthol Ice 30ml', brand:'CHARGE', category:'Liquids', price:299, oldPrice:null, isNew:false, isHit:false, isSale:false, isFeatured:false, image:PRODUCT_IMAGES.liquid[2], desc:'Свіжий ментол з крижаним фінішем.' },
+  { id:18, name:'Tobacco Gold 60ml', brand:'CHARGE', category:'Liquids', price:379, oldPrice:null, isNew:true, isHit:false, isSale:false, isFeatured:false, image:PRODUCT_IMAGES.liquid[3], desc:'Класичний тютюновий смак, преміум лінійка.' },
 
-  { id:15, name:'Vinci 3',               brand:'VOOPOO',    category:'Pod Systems', price:1199, oldPrice:null, isNew:true,  isHit:true,  isSale:false, isFeatured:true,
-    image: PRODUCT_IMAGES.pod[3],
-    desc:'Флагман VOOPOO з дисплеєм.' },
+  { id:10, name:'XROS Replacement Pods', brand:'VAPORESSO', category:'Cartridges', price:249, oldPrice:null, isNew:false, isHit:true, isSale:false, isFeatured:false, image:PRODUCT_IMAGES.cartridge[0], desc:'Картриджі 0.6Ω / 0.8Ω, 2 шт.' },
+  { id:11, name:'Caliburn G3 Pods', brand:'UWELL', category:'Cartridges', price:299, oldPrice:null, isNew:true, isHit:false, isSale:false, isFeatured:false, image:PRODUCT_IMAGES.cartridge[1], desc:'Оригінальні картриджі UWELL.' },
+  { id:19, name:'Vinci Coil Pack', brand:'VOOPOO', category:'Cartridges', price:279, oldPrice:null, isNew:false, isHit:false, isSale:false, isFeatured:false, image:PRODUCT_IMAGES.cartridge[2], desc:'Змінні випарники для Vinci, 5 шт.' },
 
-  { id:16, name:'Luxe X Pro',            brand:'VAPORESSO', category:'Pod Systems', price:1299, oldPrice:1599, isNew:false, isHit:true,  isSale:true,  isFeatured:false,
-    image: PRODUCT_IMAGES.pod[4],
-    desc:'Преміум под зі шкіряною вставкою.' },
-
-  // ============ ОДНОРАЗКИ ============
-  { id:4,  name:'Nova Bar 15000',        brand:'SMOK',      category:'Disposables', price:549,  oldPrice:null, isNew:true,  isHit:true,  isSale:false, isFeatured:true,
-    image: PRODUCT_IMAGES.disposable[0],
-    desc:'15 000 затяжок, 20 смаків на вибір.' },
-
-  { id:5,  name:'Elf Bar BC5000',        brand:'ELF',       category:'Disposables', price:449,  oldPrice:599,  isNew:false, isHit:true,  isSale:true,  isFeatured:false,
-    image: PRODUCT_IMAGES.disposable[1],
-    desc:'Хіт продажів, компактний та надійний.' },
-
-  { id:6,  name:'Lost Mary BM5000',      brand:'LOST MARY', category:'Disposables', price:479,  oldPrice:null, isNew:false, isHit:false, isSale:false, isFeatured:false,
-    image: PRODUCT_IMAGES.disposable[2],
-    desc:'Популярний одноразовий пристрій.' },
-
-  { id:17, name:'HQD Cuvie Plus',        brand:'HQD',       category:'Disposables', price:399,  oldPrice:null, isNew:true,  isHit:false, isSale:false, isFeatured:false,
-    image: PRODUCT_IMAGES.disposable[3],
-    desc:'Компактна одноразка з насиченим смаком.' },
-
-  // ============ РІДИНИ ============
-  { id:7,  name:'Salt Nic 30ml',         brand:'CHARGE',    category:'Liquids',     price:299,  oldPrice:null, isNew:false, isHit:true,  isSale:false, isFeatured:false,
-    image: PRODUCT_IMAGES.liquid[0],
-    desc:'Сольова рідина 30мг, преміум якість.' },
-
-  { id:8,  name:'Fruit Mix 60ml',        brand:'CHARGE',    category:'Liquids',     price:399,  oldPrice:499,  isNew:true,  isHit:false, isSale:true,  isFeatured:false,
-    image: PRODUCT_IMAGES.liquid[1],
-    desc:'Фруктовий мікс, 3мг нікотину.' },
-
-  { id:9,  name:'Menthol Ice 30ml',      brand:'CHARGE',    category:'Liquids',     price:299,  oldPrice:null, isNew:false, isHit:false, isSale:false, isFeatured:false,
-    image: PRODUCT_IMAGES.liquid[2],
-    desc:'Свіжий ментол з крижаним фінішем.' },
-
-  { id:18, name:'Tobacco Gold 60ml',     brand:'CHARGE',    category:'Liquids',     price:379,  oldPrice:null, isNew:true,  isHit:false, isSale:false, isFeatured:false,
-    image: PRODUCT_IMAGES.liquid[3],
-    desc:'Класичний тютюновий смак, преміум лінійка.' },
-
-  // ============ КАРТРИДЖІ ============
-  { id:10, name:'XROS Replacement Pods', brand:'VAPORESSO', category:'Cartridges',  price:249,  oldPrice:null, isNew:false, isHit:true,  isSale:false, isFeatured:false,
-    image: PRODUCT_IMAGES.cartridge[0],
-    desc:'Картриджі 0.6Ω / 0.8Ω, 2 шт.' },
-
-  { id:11, name:'Caliburn G3 Pods',      brand:'UWELL',     category:'Cartridges',  price:299,  oldPrice:null, isNew:true,  isHit:false, isSale:false, isFeatured:false,
-    image: PRODUCT_IMAGES.cartridge[1],
-    desc:'Оригінальні картриджі UWELL.' },
-
-  { id:19, name:'Vinci Coil Pack',       brand:'VOOPOO',    category:'Cartridges',  price:279,  oldPrice:null, isNew:false, isHit:false, isSale:false, isFeatured:false,
-    image: PRODUCT_IMAGES.cartridge[2],
-    desc:'Змінні випарники для Vinci, 5 шт.' },
-
-  // ============ АКСЕСУАРИ ============
-  { id:12, name:'USB-C Cable',           brand:'CHARGE',    category:'Accessories', price:199,  oldPrice:null, isNew:false, isHit:false, isSale:false, isFeatured:false,
-    image: PRODUCT_IMAGES.accessory[0],
-    desc:'Кабель для швидкої зарядки пристроїв.' },
-
-  { id:13, name:'Carry Case',            brand:'CHARGE',    category:'Accessories', price:349,  oldPrice:449,  isNew:true,  isHit:false, isSale:true,  isFeatured:false,
-    image: PRODUCT_IMAGES.accessory[1],
-    desc:'Стильний кейс для под-систем.' },
-
-  { id:14, name:'Coil Pack',             brand:'SMOK',      category:'Accessories', price:279,  oldPrice:null, isNew:false, isHit:false, isSale:false, isFeatured:false,
-    image: PRODUCT_IMAGES.accessory[2],
-    desc:'Змінні випарники, 5 шт.' },
-
-  { id:20, name:'Charging Dock',         brand:'CHARGE',    category:'Accessories', price:459,  oldPrice:null, isNew:true,  isHit:true,  isSale:false, isFeatured:false,
-    image: PRODUCT_IMAGES.accessory[3],
-    desc:'Зарядна станція для кількох пристроїв.' },
+  { id:12, name:'USB-C Cable', brand:'CHARGE', category:'Accessories', price:199, oldPrice:null, isNew:false, isHit:false, isSale:false, isFeatured:false, image:PRODUCT_IMAGES.accessory[0], desc:'Кабель для швидкої зарядки пристроїв.' },
+  { id:13, name:'Carry Case', brand:'CHARGE', category:'Accessories', price:349, oldPrice:449, isNew:true, isHit:false, isSale:true, isFeatured:false, image:PRODUCT_IMAGES.accessory[1], desc:'Стильний кейс для под-систем.' },
+  { id:14, name:'Coil Pack', brand:'SMOK', category:'Accessories', price:279, oldPrice:null, isNew:false, isHit:false, isSale:false, isFeatured:false, image:PRODUCT_IMAGES.accessory[2], desc:'Змінні випарники, 5 шт.' },
+  { id:20, name:'Charging Dock', brand:'CHARGE', category:'Accessories', price:459, oldPrice:null, isNew:true, isHit:true, isSale:false, isFeatured:false, image:PRODUCT_IMAGES.accessory[3], desc:'Зарядна станція для кількох пристроїв.' },
 ];
+
+const STATUS_LABELS = {
+  new:'Нове', confirmed:'Підтверджено', shipped:'Відправлено',
+  completed:'Завершено', cancelled:'Скасовано'
+};
+const DELIVERY_LABELS = { nova:'Нова Пошта', courier:'Кур\'єр', pickup:'Самовивіз' };
+
+let ORDERS = [
+  { id:1024, name:'Олександр', phone:'+380501234567', delivery:'nova', city:'Київ', warehouse:'Відділення №15', total:1898, date:'2025-01-15', status:'new', items:[] },
+  { id:1025, name:'Марія', phone:'+380671234567', delivery:'pickup', city:'', warehouse:'', total:999, date:'2025-01-16', status:'confirmed', items:[] },
+  { id:1026, name:'Іван', phone:'+380931234567', delivery:'courier', city:'Львів', warehouse:'вул. Шевченка 10', total:2498, date:'2025-01-17', status:'shipped', items:[] },
+];
+
+/* ============================================================ */
+/* ГЛОБАЛЬНИЙ СТАН                                              */
+/* ============================================================ */
+let cart = [];
+let favorites = [];
+let catalogCategory = 'all';
+let editingProductId = null;
+let currentDelivery = 'nova';
+
 /* ============================================================ */
 /* ТЕМА                                                         */
 /* ============================================================ */
@@ -1207,10 +1083,11 @@ function badgeHTML(p){
 
 function productCardHTML(p){
   const isFav = favorites.includes(p.id);
+  const fallback = IMG();
   return `
     <div class="product-card" onclick="openProduct(${p.id})">
       <div class="product-media">
-        <img src="${p.image || IMG(p.id)}" alt="${p.name}" loading="lazy" onerror="this.src='${IMG(p.id)}'">
+        <img src="${p.image || fallback}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'">
         <div class="product-badges">${badgeHTML(p)}</div>
         <button class="fav-btn ${isFav?'active':''}" onclick="event.stopPropagation();toggleFav(${p.id})">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -1336,13 +1213,14 @@ function renderCart(){
     return;
   }
   let total = 0;
+  const fallback = IMG();
   body.innerHTML = cart.map(item => {
     const p = PRODUCTS.find(x => x.id === item.id);
     if(!p) return '';
     total += p.price * item.qty;
     return `
       <div class="cart-item">
-        <div class="cart-item-img"><img src="${p.image || IMG(p.id)}" alt="${p.name}" onerror="this.src='${IMG(p.id)}'"></div>
+        <div class="cart-item-img"><img src="${p.image || fallback}" alt="${p.name}" onerror="this.onerror=null;this.src='${fallback}'"></div>
         <div class="cart-item-info">
           <div class="cart-item-brand">${p.brand}</div>
           <div class="cart-item-name">${p.name}</div>
@@ -1379,7 +1257,6 @@ function openCheckout(){
   closeCart();
   document.getElementById('checkoutStep1').classList.add('active');
   document.getElementById('checkoutStep2').classList.remove('active');
-  // вибір доставки за замовчуванням
   selectDelivery('nova');
   renderCheckoutTotals();
   document.getElementById('checkoutOverlay').classList.add('open');
@@ -1407,28 +1284,16 @@ function renderDeliveryFields(){
     container.innerHTML = `
       <div class="checkout-section-title">Адреса Нової Пошти</div>
       <div class="form-row">
-        <div class="field">
-          <label>Місто *</label>
-          <input type="text" id="coCity" placeholder="Київ">
-        </div>
-        <div class="field">
-          <label>Відділення / поштомат *</label>
-          <input type="text" id="coWarehouse" placeholder="Відділення №15">
-        </div>
+        <div class="field"><label>Місто *</label><input type="text" id="coCity" placeholder="Київ"></div>
+        <div class="field"><label>Відділення / поштомат *</label><input type="text" id="coWarehouse" placeholder="Відділення №15"></div>
       </div>
     `;
   } else if(currentDelivery === 'courier'){
     container.innerHTML = `
       <div class="checkout-section-title">Адреса доставки</div>
       <div class="form-row">
-        <div class="field">
-          <label>Місто *</label>
-          <input type="text" id="coCity" placeholder="Київ">
-        </div>
-        <div class="field">
-          <label>Вулиця, будинок, квартира *</label>
-          <input type="text" id="coWarehouse" placeholder="вул. Хрещатик 1, кв. 5">
-        </div>
+        <div class="field"><label>Місто *</label><input type="text" id="coCity" placeholder="Київ"></div>
+        <div class="field"><label>Вулиця, будинок, квартира *</label><input type="text" id="coWarehouse" placeholder="вул. Хрещатик 1, кв. 5"></div>
       </div>
     `;
   } else {
@@ -1471,14 +1336,8 @@ function submitOrder(){
   const email = document.getElementById('coEmail').value.trim();
   const comment = document.getElementById('coComment').value.trim();
 
-  if(!name || !phone){
-    toast('Заповніть ім\'я та телефон');
-    return;
-  }
-  if(currentDelivery !== 'pickup' && (!city || !warehouse)){
-    toast('Заповніть адресу доставки');
-    return;
-  }
+  if(!name || !phone){ toast('Заповніть ім\'я та телефон'); return; }
+  if(currentDelivery !== 'pickup' && (!city || !warehouse)){ toast('Заповніть адресу доставки'); return; }
 
   const sub = cartSubtotal();
   const del = deliveryCost();
@@ -1486,11 +1345,8 @@ function submitOrder(){
   const orderId = 1024 + ORDERS.length;
 
   ORDERS.push({
-    id: orderId,
-    name, phone, email, comment,
-    delivery: currentDelivery,
-    city, warehouse,
-    total,
+    id: orderId, name, phone, email, comment,
+    delivery: currentDelivery, city, warehouse, total,
     date: new Date().toISOString().slice(0,10),
     status: 'new',
     items: cart.map(i => {
@@ -1582,7 +1438,6 @@ function renderAdmin(){
   renderOrdersTable();
   renderRecentOrders();
 
-  // заповнення фільтру категорій
   const catSel = document.getElementById('adminProductCategory');
   catSel.innerHTML = '<option value="">Всі категорії</option>' +
     CATEGORIES.map(c => `<option value="${c.name}">${c.label}</option>`).join('');
@@ -1594,10 +1449,11 @@ function renderProductsTable(){
   let items = [...PRODUCTS];
   if(q) items = items.filter(p => (p.name+p.brand).toLowerCase().includes(q));
   if(cat) items = items.filter(p => p.category === cat);
+  const fallback = IMG();
 
   document.getElementById('productsTable').innerHTML = items.map(p => `
     <tr>
-      <td><img class="product-thumb" src="${p.image || IMG(p.id)}" alt="" onerror="this.src='${IMG(p.id)}'"></td>
+      <td><img class="product-thumb" src="${p.image || fallback}" alt="" onerror="this.onerror=null;this.src='${fallback}'"></td>
       <td><b>${p.name}</b></td>
       <td>${p.brand}</td>
       <td>${p.category}</td>
@@ -1728,7 +1584,6 @@ function saveProduct(){
     });
     toast('Товар додано');
   }
-
   closeProductForm();
   renderAdmin();
   renderCatalog(); renderBestsellers(); renderNewArrivals();
@@ -1746,10 +1601,9 @@ function addCategory(){
   const name = prompt('Назва категорії (латиницею, без пробілів):');
   if(!name) return;
   CATEGORIES.push({
-    name,
-    label: name.toUpperCase(),
+    name, label: name.toUpperCase(),
     num: String(CATEGORIES.length + 1).padStart(2,'0'),
-    image: IMG(Date.now())
+    image: IMG()
   });
   renderAdmin(); renderCategories();
   toast('Категорію додано');
@@ -1774,7 +1628,7 @@ function deleteCategory(i){
 }
 
 /* ============================================================ */
-/* АНІМАЦІЯ / КЛАВІШІ / СТАРТ                                   */
+/* АНІМАЦІЯ / КЛАВІШІ                                           */
 /* ============================================================ */
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -1788,12 +1642,14 @@ document.addEventListener('keydown', (e) => {
   if((e.metaKey || e.ctrlKey) && e.key === 'k'){ e.preventDefault(); openSearch(); }
 });
 
-/* Обробник кліку по доставці */
 document.getElementById('deliveryOptions').addEventListener('click', (e) => {
   const opt = e.target.closest('.delivery-option');
   if(opt) selectDelivery(opt.dataset.delivery);
 });
 
+/* ============================================================ */
+/* СТАРТ                                                        */
+/* ============================================================ */
 renderCategories();
 renderBestsellers();
 renderNewArrivals();
@@ -1803,7 +1659,7 @@ updateCartBadge();
 selectDelivery('nova');
 
 console.log('%cCHARGE LAB', 'font-size:24px;font-weight:900;letter-spacing:.2em;');
-console.log('%cПреміум вейп-магазин v2', 'color:#888;font-size:12px;letter-spacing:.1em;');
+console.log('%cПреміум вейп-магазин v3', 'color:#888;font-size:12px;letter-spacing:.1em;');
 console.log('Ctrl/Cmd+K → пошук · ESC → закрити · Адмінка у футері');
 </script>
 </body>
