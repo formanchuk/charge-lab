@@ -979,56 +979,164 @@ body.no-scroll{overflow:hidden}
 
 <script>
 /* ============================================================ */
-/* ДАНІ                                                         */
+/* ДАНІ — реальні фото по категоріях                            */
 /* ============================================================ */
+
 const CATEGORIES = [
-  { name:'Pod Systems', label:'ПОД-СИСТЕМИ', num:'01', image:'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=600&h=450&fit=crop' },
-  { name:'Disposables', label:'ОДНОРАЗКИ',    num:'02', image:'https://images.unsplash.com/photo-1607623820419-3b4a1e6d54b6?w=600&h=450&fit=crop' },
-  { name:'Liquids',     label:'РІДИНИ',       num:'03', image:'https://images.unsplash.com/photo-1567696153798-9111f9cd3d0d?w=600&h=450&fit=crop' },
-  { name:'Cartridges',  label:'КАРТРИДЖІ',    num:'04', image:'https://images.unsplash.com/photo-1527960656-4c4e0e5b8fdc?w=600&h=450&fit=crop' },
-  { name:'Accessories', label:'АКСЕСУАРИ',    num:'05', image:'https://images.unsplash.com/photo-1602526432604-029a709e131c?w=600&h=450&fit=crop' },
-  { name:'Sale',        label:'АКЦІЇ',        num:'06', image:'https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=600&h=450&fit=crop' },
+  {
+    name:'Pod Systems', label:'ПОД-СИСТЕМИ', num:'01',
+    image:'https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=800&h=600&fit=crop&q=80'
+  },
+  {
+    name:'Disposables', label:'ОДНОРАЗКИ', num:'02',
+    image:'https://images.unsplash.com/photo-1607623820419-3b4a1e6d54b6?w=800&h=600&fit=crop&q=80'
+  },
+  {
+    name:'Liquids', label:'РІДИНИ', num:'03',
+    image:'https://images.unsplash.com/photo-1567696153798-9111f9cd3d0d?w=800&h=600&fit=crop&q=80'
+  },
+  {
+    name:'Cartridges', label:'КАРТРИДЖІ', num:'04',
+    image:'https://images.unsplash.com/photo-1527960656-4c4e0e5b8fdc?w=800&h=600&fit=crop&q=80'
+  },
+  {
+    name:'Accessories', label:'АКСЕСУАРИ', num:'05',
+    image:'https://images.unsplash.com/photo-1602526432604-029a709e131c?w=800&h=600&fit=crop&q=80'
+  },
+  {
+    name:'Sale', label:'АКЦІЇ', num:'06',
+    image:'https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=800&h=600&fit=crop&q=80'
+  },
 ];
 
-const IMG = id => `https://picsum.photos/seed/vape${id}/500/500`;
+/* Реальні фото товарів — по категоріях */
+const PRODUCT_IMAGES = {
+  // POD-СИСТЕМИ
+  pod: [
+    'https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=600&h=600&fit=crop&q=80',
+    'https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=600&h=600&fit=crop&q=80',
+    'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=600&h=600&fit=crop&q=80',
+    'https://images.unsplash.com/photo-1614179929897-9d6d8f9a0c3e?w=600&h=600&fit=crop&q=80',
+    'https://images.unsplash.com/photo-1611765083440-b7e6a6f8a8f6?w=600&h=600&fit=crop&q=80',
+  ],
+  // ОДНОРАЗКИ
+  disposable: [
+    'https://images.unsplash.com/photo-1607623820419-3b4a1e6d54b6?w=600&h=600&fit=crop&q=80',
+    'https://images.unsplash.com/photo-1622035453010-3f1b1c8d5f8c?w=600&h=600&fit=crop&q=80',
+    'https://images.unsplash.com/photo-1610461888750-10bfc601b874?w=600&h=600&fit=crop&q=80',
+    'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&h=600&fit=crop&q=80',
+  ],
+  // РІДИНИ
+  liquid: [
+    'https://images.unsplash.com/photo-1567696153798-9111f9cd3d0d?w=600&h=600&fit=crop&q=80',
+    'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=600&h=600&fit=crop&q=80',
+    'https://images.unsplash.com/photo-1585671963101-8c0ba95a6f9e?w=600&h=600&fit=crop&q=80',
+    'https://images.unsplash.com/photo-1615486364100-9d1e0e77d8e2?w=600&h=600&fit=crop&q=80',
+  ],
+  // КАРТРИДЖІ / КОЙЛИ
+  cartridge: [
+    'https://images.unsplash.com/photo-1527960656-4c4e0e5b8fdc?w=600&h=600&fit=crop&q=80',
+    'https://images.unsplash.com/photo-1607424064879-708e4d9b3f8e?w=600&h=600&fit=crop&q=80',
+    'https://images.unsplash.com/photo-1613918431703-aa50889e3be9?w=600&h=600&fit=crop&q=80',
+  ],
+  // АКСЕСУАРИ
+  accessory: [
+    'https://images.unsplash.com/photo-1602526432604-029a709e131c?w=600&h=600&fit=crop&q=80',
+    'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&h=600&fit=crop&q=80',
+    'https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=600&h=600&fit=crop&q=80',
+    'https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=600&h=600&fit=crop&q=80',
+  ],
+};
+
+/* Хелпер: вибрати фото з масиву по індексу */
+const pickImg = (arr, i) => arr[i % arr.length];
 
 let PRODUCTS = [
-  { id:1,  name:'XROS 4 Pod Kit',        brand:'VAPORESSO', category:'Pod Systems', price:999,  oldPrice:null, isNew:true,  isHit:true,  isSale:false, isFeatured:true,  image:'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=500&h=500&fit=crop', desc:'Компактний под-пристрій з регульованим обдувом.' },
-  { id:2,  name:'Argus P2',              brand:'VOOPOO',    category:'Pod Systems', price:1099, oldPrice:1399, isNew:false, isHit:true,  isSale:true,  isFeatured:true,  image:IMG(2), desc:'Легкий корпус, потужна батарея 1100mAh.' },
-  { id:3,  name:'Caliburn G3',           brand:'UWELL',     category:'Pod Systems', price:949,  oldPrice:null, isNew:true,  isHit:false, isSale:false, isFeatured:false, image:IMG(3), desc:'Класика від UWELL у новому виконанні.' },
-  { id:4,  name:'Nova Bar 15000',        brand:'SMOK',      category:'Disposables', price:549,  oldPrice:null, isNew:true,  isHit:true,  isSale:false, isFeatured:true,  image:'https://images.unsplash.com/photo-1607623820419-3b4a1e6d54b6?w=500&h=500&fit=crop', desc:'15 000 затяжок, 20 смаків на вибір.' },
-  { id:5,  name:'Elf Bar BC5000',        brand:'ELF',       category:'Disposables', price:449,  oldPrice:599,  isNew:false, isHit:true,  isSale:true,  isFeatured:false, image:IMG(5), desc:'Хіт продажів, компактний та надійний.' },
-  { id:6,  name:'Lost Mary BM5000',      brand:'LOST MARY', category:'Disposables', price:479,  oldPrice:null, isNew:false, isHit:false, isSale:false, isFeatured:false, image:IMG(6), desc:'Популярний одноразовий пристрій.' },
-  { id:7,  name:'Salt Nic 30ml',         brand:'CHARGE',    category:'Liquids',     price:299,  oldPrice:null, isNew:false, isHit:true,  isSale:false, isFeatured:false, image:'https://images.unsplash.com/photo-1567696153798-9111f9cd3d0d?w=500&h=500&fit=crop', desc:'Сольова рідина 30мг, преміум якість.' },
-  { id:8,  name:'Fruit Mix 60ml',        brand:'CHARGE',    category:'Liquids',     price:399,  oldPrice:499,  isNew:true,  isHit:false, isSale:true,  isFeatured:false, image:IMG(8), desc:'Фруктовий мікс, 3мг нікотину.' },
-  { id:9,  name:'Menthol Ice 30ml',      brand:'CHARGE',    category:'Liquids',     price:299,  oldPrice:null, isNew:false, isHit:false, isSale:false, isFeatured:false, image:IMG(9), desc:'Свіжий ментол з крижаним фінішем.' },
-  { id:10, name:'XROS Replacement Pods', brand:'VAPORESSO', category:'Cartridges',  price:249,  oldPrice:null, isNew:false, isHit:true,  isSale:false, isFeatured:false, image:IMG(10), desc:'Картриджі 0.6Ω / 0.8Ω, 2 шт.' },
-  { id:11, name:'Caliburn G3 Pods',      brand:'UWELL',     category:'Cartridges',  price:299,  oldPrice:null, isNew:true,  isHit:false, isSale:false, isFeatured:false, image:IMG(11), desc:'Оригінальні картриджі UWELL.' },
-  { id:12, name:'USB-C Cable',           brand:'CHARGE',    category:'Accessories', price:199,  oldPrice:null, isNew:false, isHit:false, isSale:false, isFeatured:false, image:IMG(12), desc:'Кабель для швидкої зарядки пристроїв.' },
-  { id:13, name:'Carry Case',            brand:'CHARGE',    category:'Accessories', price:349,  oldPrice:449,  isNew:true,  isHit:false, isSale:true,  isFeatured:false, image:IMG(13), desc:'Стильний кейс для под-систем.' },
-  { id:14, name:'Coil Pack',             brand:'SMOK',      category:'Accessories', price:279,  oldPrice:null, isNew:false, isHit:false, isSale:false, isFeatured:false, image:IMG(14), desc:'Змінні випарники, 5 шт.' },
-  { id:15, name:'Vinci 3',               brand:'VOOPOO',    category:'Pod Systems', price:1199, oldPrice:null, isNew:true,  isHit:true,  isSale:false, isFeatured:true,  image:IMG(15), desc:'Флагман VOOPOO з дисплеєм.' },
-  { id:16, name:'Luxe X Pro',            brand:'VAPORESSO', category:'Pod Systems', price:1299, oldPrice:1599, isNew:false, isHit:true,  isSale:true,  isFeatured:false, image:IMG(16), desc:'Преміум под зі шкіряною вставкою.' },
+  // ============ POD-СИСТЕМИ ============
+  { id:1,  name:'XROS 4 Pod Kit',        brand:'VAPORESSO', category:'Pod Systems', price:999,  oldPrice:null, isNew:true,  isHit:true,  isSale:false, isFeatured:true,
+    image: PRODUCT_IMAGES.pod[0],
+    desc:'Компактний под-пристрій з регульованим обдувом.' },
+
+  { id:2,  name:'Argus P2',              brand:'VOOPOO',    category:'Pod Systems', price:1099, oldPrice:1399, isNew:false, isHit:true,  isSale:true,  isFeatured:true,
+    image: PRODUCT_IMAGES.pod[1],
+    desc:'Легкий корпус, потужна батарея 1100mAh.' },
+
+  { id:3,  name:'Caliburn G3',           brand:'UWELL',     category:'Pod Systems', price:949,  oldPrice:null, isNew:true,  isHit:false, isSale:false, isFeatured:false,
+    image: PRODUCT_IMAGES.pod[2],
+    desc:'Класика від UWELL у новому виконанні.' },
+
+  { id:15, name:'Vinci 3',               brand:'VOOPOO',    category:'Pod Systems', price:1199, oldPrice:null, isNew:true,  isHit:true,  isSale:false, isFeatured:true,
+    image: PRODUCT_IMAGES.pod[3],
+    desc:'Флагман VOOPOO з дисплеєм.' },
+
+  { id:16, name:'Luxe X Pro',            brand:'VAPORESSO', category:'Pod Systems', price:1299, oldPrice:1599, isNew:false, isHit:true,  isSale:true,  isFeatured:false,
+    image: PRODUCT_IMAGES.pod[4],
+    desc:'Преміум под зі шкіряною вставкою.' },
+
+  // ============ ОДНОРАЗКИ ============
+  { id:4,  name:'Nova Bar 15000',        brand:'SMOK',      category:'Disposables', price:549,  oldPrice:null, isNew:true,  isHit:true,  isSale:false, isFeatured:true,
+    image: PRODUCT_IMAGES.disposable[0],
+    desc:'15 000 затяжок, 20 смаків на вибір.' },
+
+  { id:5,  name:'Elf Bar BC5000',        brand:'ELF',       category:'Disposables', price:449,  oldPrice:599,  isNew:false, isHit:true,  isSale:true,  isFeatured:false,
+    image: PRODUCT_IMAGES.disposable[1],
+    desc:'Хіт продажів, компактний та надійний.' },
+
+  { id:6,  name:'Lost Mary BM5000',      brand:'LOST MARY', category:'Disposables', price:479,  oldPrice:null, isNew:false, isHit:false, isSale:false, isFeatured:false,
+    image: PRODUCT_IMAGES.disposable[2],
+    desc:'Популярний одноразовий пристрій.' },
+
+  { id:17, name:'HQD Cuvie Plus',        brand:'HQD',       category:'Disposables', price:399,  oldPrice:null, isNew:true,  isHit:false, isSale:false, isFeatured:false,
+    image: PRODUCT_IMAGES.disposable[3],
+    desc:'Компактна одноразка з насиченим смаком.' },
+
+  // ============ РІДИНИ ============
+  { id:7,  name:'Salt Nic 30ml',         brand:'CHARGE',    category:'Liquids',     price:299,  oldPrice:null, isNew:false, isHit:true,  isSale:false, isFeatured:false,
+    image: PRODUCT_IMAGES.liquid[0],
+    desc:'Сольова рідина 30мг, преміум якість.' },
+
+  { id:8,  name:'Fruit Mix 60ml',        brand:'CHARGE',    category:'Liquids',     price:399,  oldPrice:499,  isNew:true,  isHit:false, isSale:true,  isFeatured:false,
+    image: PRODUCT_IMAGES.liquid[1],
+    desc:'Фруктовий мікс, 3мг нікотину.' },
+
+  { id:9,  name:'Menthol Ice 30ml',      brand:'CHARGE',    category:'Liquids',     price:299,  oldPrice:null, isNew:false, isHit:false, isSale:false, isFeatured:false,
+    image: PRODUCT_IMAGES.liquid[2],
+    desc:'Свіжий ментол з крижаним фінішем.' },
+
+  { id:18, name:'Tobacco Gold 60ml',     brand:'CHARGE',    category:'Liquids',     price:379,  oldPrice:null, isNew:true,  isHit:false, isSale:false, isFeatured:false,
+    image: PRODUCT_IMAGES.liquid[3],
+    desc:'Класичний тютюновий смак, преміум лінійка.' },
+
+  // ============ КАРТРИДЖІ ============
+  { id:10, name:'XROS Replacement Pods', brand:'VAPORESSO', category:'Cartridges',  price:249,  oldPrice:null, isNew:false, isHit:true,  isSale:false, isFeatured:false,
+    image: PRODUCT_IMAGES.cartridge[0],
+    desc:'Картриджі 0.6Ω / 0.8Ω, 2 шт.' },
+
+  { id:11, name:'Caliburn G3 Pods',      brand:'UWELL',     category:'Cartridges',  price:299,  oldPrice:null, isNew:true,  isHit:false, isSale:false, isFeatured:false,
+    image: PRODUCT_IMAGES.cartridge[1],
+    desc:'Оригінальні картриджі UWELL.' },
+
+  { id:19, name:'Vinci Coil Pack',       brand:'VOOPOO',    category:'Cartridges',  price:279,  oldPrice:null, isNew:false, isHit:false, isSale:false, isFeatured:false,
+    image: PRODUCT_IMAGES.cartridge[2],
+    desc:'Змінні випарники для Vinci, 5 шт.' },
+
+  // ============ АКСЕСУАРИ ============
+  { id:12, name:'USB-C Cable',           brand:'CHARGE',    category:'Accessories', price:199,  oldPrice:null, isNew:false, isHit:false, isSale:false, isFeatured:false,
+    image: PRODUCT_IMAGES.accessory[0],
+    desc:'Кабель для швидкої зарядки пристроїв.' },
+
+  { id:13, name:'Carry Case',            brand:'CHARGE',    category:'Accessories', price:349,  oldPrice:449,  isNew:true,  isHit:false, isSale:true,  isFeatured:false,
+    image: PRODUCT_IMAGES.accessory[1],
+    desc:'Стильний кейс для под-систем.' },
+
+  { id:14, name:'Coil Pack',             brand:'SMOK',      category:'Accessories', price:279,  oldPrice:null, isNew:false, isHit:false, isSale:false, isFeatured:false,
+    image: PRODUCT_IMAGES.accessory[2],
+    desc:'Змінні випарники, 5 шт.' },
+
+  { id:20, name:'Charging Dock',         brand:'CHARGE',    category:'Accessories', price:459,  oldPrice:null, isNew:true,  isHit:true,  isSale:false, isFeatured:false,
+    image: PRODUCT_IMAGES.accessory[3],
+    desc:'Зарядна станція для кількох пристроїв.' },
 ];
-
-const STATUS_LABELS = {
-  new:'Нове', confirmed:'Підтверджено', shipped:'Відправлено',
-  completed:'Завершено', cancelled:'Скасовано'
-};
-const DELIVERY_LABELS = { nova:'Нова Пошта', courier:'Кур\'єр', pickup:'Самовивіз' };
-
-let ORDERS = [
-  { id:1024, name:'Олександр', phone:'+380501234567', delivery:'nova', city:'Київ', warehouse:'Відділення №15', total:1898, date:'2025-01-15', status:'new', items:[] },
-  { id:1025, name:'Марія',     phone:'+380671234567', delivery:'pickup', city:'', warehouse:'', total:999, date:'2025-01-16', status:'confirmed', items:[] },
-  { id:1026, name:'Іван',      phone:'+380931234567', delivery:'courier', city:'Львів', warehouse:'вул. Шевченка 10', total:2498, date:'2025-01-17', status:'shipped', items:[] },
-];
-
-let cart = [];
-let favorites = [];
-let catalogCategory = 'all';
-let editingProductId = null;
-let currentDelivery = 'nova';
-
 /* ============================================================ */
 /* ТЕМА                                                         */
 /* ============================================================ */
